@@ -15,7 +15,11 @@ export interface Reclamation {
   providedIn: 'root'
 })
 export class ReclamationService {
+<<<<<<< HEAD
   private apiUrl = 'http://localhost:8099/Rec/reclamation';
+=======
+  private apiUrl = 'http://localhost:8065/Rec/reclamation';
+>>>>>>> e6f18f61c3d6cd2b5d2c79c823868cccfebe16bb
 
   constructor(private http: HttpClient) {}
 

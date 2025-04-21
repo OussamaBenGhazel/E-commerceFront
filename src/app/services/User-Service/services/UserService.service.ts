@@ -6,7 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
+<<<<<<< HEAD
   private readonly backendUrl = 'http://localhost:8045/api/v1';
+=======
+  private readonly backendUrl = 'http://localhost:8065/api/v1';
+>>>>>>> e6f18f61c3d6cd2b5d2c79c823868cccfebe16bb
 
   constructor(private http: HttpClient) {}
 
