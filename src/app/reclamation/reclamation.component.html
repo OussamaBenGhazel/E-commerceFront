@@ -1,0 +1,59 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Gestion des Réclamations</h2>
+
+  <!-- Formulaire d'ajout -->
+  <form (submit)="addReclamation()" class="mb-4 p-4 border rounded shadow-sm bg-light">
+    <div class="mb-3">
+      <label for="type" class="form-label">Type:</label>
+      <input type="text" [(ngModel)]="newReclamation.type" name="type" id="type" class="form-control" required />
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email:</label>
+      <input type="email" [(ngModel)]="newReclamation.email" name="email" id="email" class="form-control" required />
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description:</label>
+      <textarea [(ngModel)]="newReclamation.description" name="description" id="description" class="form-control" required></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="etat" class="form-label">État:</label>
+      <input type="text" [(ngModel)]="newReclamation.etat" name="etat" id="etat" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Ajouter</button>
+  </form>
+
+  <!-- Tableau des réclamations -->
+  <div class="table-responsive shadow-lg rounded mb-5">
+    <table class="table table-hover table-striped align-middle">
+      <thead class="table-dark text-white">
+        <tr>
+          <th>ID</th>
+          <th>Type</th>
+          <th>Email</th>
+          <th>Description</th>
+          <th>État</th>
+          <th class="text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rec of reclamations">
+          <td>{{ rec.id }}</td>
+          <td><input [(ngModel)]="rec.type" class="form-control form-control-sm" /></td>
+          <td><input [(ngModel)]="rec.email" class="form-control form-control-sm" /></td>
+          <td><input [(ngModel)]="rec.description" class="form-control form-control-sm" /></td>
+          <td><input [(ngModel)]="rec.etat" class="form-control form-control-sm" /></td>
+          <td class="text-center">
+            <div class="d-flex justify-content-center gap-2">
+              <button class="btn btn-warning btn-sm" (click)="updateReclamation(rec)">
+                <i class="fas fa-edit"></i> Mettre à jour
+              </button>
+              <button class="btn btn-danger btn-sm" (click)="deleteReclamation(rec.id)">
+                <i class="fas fa-trash-alt"></i> Supprimer
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

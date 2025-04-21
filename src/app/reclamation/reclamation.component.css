@@ -1,0 +1,61 @@
+/* Styles personnalisés pour le formulaire et les tableaux */
+.container {
+    max-width: 1200px;
+  }
+  
+  form {
+    background-color: #f9f9f9; /* Fond léger pour le formulaire */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  }
+  
+  form .form-control {
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  
+  form button {
+    border-radius: 25px; /* Coins arrondis pour le bouton */
+  }
+  
+  table {
+    border-collapse: collapse;
+  }
+  
+  thead {
+    background-color: #343a40;
+  }
+  
+  th, td {
+    padding: 12px 15px;
+  }
+  
+  .table-hover tbody tr:hover {
+    background-color: #f1f1f1; /* Effet au survol de ligne */
+  }
+  
+  table .btn {
+    border-radius: 25px; /* Coins arrondis pour les boutons */
+    font-size: 0.9rem;
+  }
+  
+  .table-responsive {
+    margin-top: 30px;
+  }
+  
+  .table-responsive .table {
+    min-width: 100%;
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9; /* Alternance de couleur de ligne */
+  }
+  
+  .table-striped tbody tr:nth-of-type(even) {
+    background-color: #ffffff;
+  }
+  
+  .table-dark th, .table-dark td {
+    border-color: #454d55;
+  }
+  

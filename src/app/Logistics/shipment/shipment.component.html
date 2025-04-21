@@ -1,0 +1,94 @@
+<div class="container">
+    <h2>Shipment Management</h2>
+    
+    <!-- Create Shipment Form -->
+    <div>
+      <h3>Create Shipment</h3>
+      <form (ngSubmit)="createShipment()" #shipmentForm="ngForm">
+        <div class="form-group">
+          <label for="trackingNumber">Tracking Number</label>
+          <input type="text" id="trackingNumber" class="form-control" [(ngModel)]="newShipment.trackingNumber" name="trackingNumber" required />
+        </div>
+        <div class="form-group">
+          <label for="carrier">Carrier</label>
+          <input type="text" id="carrier" class="form-control" [(ngModel)]="newShipment.carrier" name="carrier" required />
+        </div>
+        <div class="form-group">
+          <label for="status">Status</label>
+          <input type="text" id="status" class="form-control" [(ngModel)]="newShipment.status" name="status" required />
+        </div>
+        <div class="form-group">
+          <label for="destination">Destination</label>
+          <input type="text" id="destination" class="form-control" [(ngModel)]="newShipment.destination" name="destination" required />
+        </div>
+        <div class="form-group">
+          <label for="estimatedDeliveryDate">Estimated Delivery Date</label>
+          <input type="datetime-local" id="estimatedDeliveryDate" class="form-control" [(ngModel)]="newShipment.estimatedDeliveryDate" name="estimatedDeliveryDate" />
+        </div>
+        <button type="submit" class="btn btn-primary">Create Shipment</button>
+      </form>
+    </div>
+  
+    <hr>
+  
+    <!-- List of Shipments -->
+    <div>
+      <h3>All Shipments</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Tracking Number</th>
+            <th>Carrier</th>
+            <th>Status</th>
+            <th>Destination</th>
+            <th>Shipment Date</th>
+            <th>Estimated Delivery</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let shipment of shipments">
+            <td>{{ shipment.trackingNumber }}</td>
+            <td>{{ shipment.carrier }}</td>
+            <td>{{ shipment.status }}</td>
+            <td>{{ shipment.destination }}</td>
+            <td>{{ shipment.shipmentDate }}</td>
+            <td>{{ shipment.estimatedDeliveryDate }}</td>
+            <td>
+              <button class="btn btn-warning" (click)="editShipment(shipment)">Edit</button>
+              <button class="btn btn-danger" (click)="deleteShipment(shipment.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Edit Shipment Form -->
+    <div *ngIf="selectedShipment">
+      <h3>Edit Shipment</h3>
+      <form (ngSubmit)="updateShipment()" #editForm="ngForm">
+        <div class="form-group">
+          <label for="editTrackingNumber">Tracking Number</label>
+          <input type="text" id="editTrackingNumber" class="form-control" [(ngModel)]="selectedShipment.trackingNumber" name="trackingNumber" required />
+        </div>
+        <div class="form-group">
+          <label for="editCarrier">Carrier</label>
+          <input type="text" id="editCarrier" class="form-control" [(ngModel)]="selectedShipment.carrier" name="carrier" required />
+        </div>
+        <div class="form-group">
+          <label for="editStatus">Status</label>
+          <input type="text" id="editStatus" class="form-control" [(ngModel)]="selectedShipment.status" name="status" required />
+        </div>
+        <div class="form-group">
+          <label for="editDestination">Destination</label>
+          <input type="text" id="editDestination" class="form-control" [(ngModel)]="selectedShipment.destination" name="destination" required />
+        </div>
+        <div class="form-group">
+          <label for="editEstimatedDeliveryDate">Estimated Delivery Date</label>
+          <input type="datetime-local" id="editEstimatedDeliveryDate" class="form-control" [(ngModel)]="selectedShipment.estimatedDeliveryDate" name="estimatedDeliveryDate" />
+        </div>
+        <button type="submit" class="btn btn-success">Update Shipment</button>
+      </form>
+    </div>
+  </div>
+  

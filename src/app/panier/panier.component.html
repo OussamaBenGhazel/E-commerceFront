@@ -1,0 +1,22 @@
+<h2>Votre panier</h2>
+<div *ngIf="panier.produits.length === 0">
+  <p>Votre panier est vide.</p>
+</div>
+<div *ngIf="panier.produits.length > 0">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Produit</th>
+        <th>Prix</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let produit of panier.produits">
+        <td>{{ produit.name }}</td>
+        <td>{{ produit.price }} €</td>
+      </tr>
+    </tbody>
+  </table>
+  <h4>Total : {{ getTotalPrice() }} €</h4>
+  <button class="btn btn-success" (click)="savePanier()">Valider le panier</button>
+</div>

@@ -1,0 +1,99 @@
+<div class="facture-container">
+  <header class="facture-header">
+    <h2>
+      <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/>
+      </svg>
+      Détails de la facture
+    </h2>
+    <div class="header-underline"></div>
+  </header>
+
+  <div class="alert-container">
+    <div *ngIf="error" class="alert alert-error">
+      <span class="alert-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/>
+        </svg>
+      </span>
+      {{ error }}
+    </div>
+  </div>
+
+  <div *ngIf="facture" class="facture-details">
+    <div class="facture-card">
+      <div class="facture-grid">
+        <div class="facture-item">
+          <span class="label">
+            <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V8a2 2 0 00-2-2h-4"/>
+            </svg>
+            Facture ID
+          </span>
+          <span class="value">{{ facture.id }}</span>
+        </div>
+        <div class="facture-item">
+          <span class="label">
+            <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 005.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/>
+            </svg>
+            Date de facturation
+          </span>
+          <span class="value">{{ facture.dateFacture | date:'medium' }}</span>
+        </div>
+        <div class="facture-item">
+          <span class="label">
+            <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12h-1m-16 0h1"/>
+            </svg>
+            Montant Total
+          </span>
+          <span class="value">{{ facture.montantTotal | currency:'EUR' }}</span>
+        </div>
+        <div class="facture-item">
+          <span class="label">
+            <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            Statut
+          </span>
+          <span class="value">{{ facture.status }}</span>
+        </div>
+        <div class="facture-item">
+          <span class="label">
+            <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+            Commande ID
+          </span>
+          <span class="value">{{ facture.commande.id }}</span>
+        </div>
+        <div class="facture-item">
+          <span class="label">
+            <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M15 7h3a5 5 0 015 5v7a5 5 0 01-5 5H6a5 5 0 01-5-5v-7a5 5 0 015-5h3"/>
+            </svg>
+            Numéro de commande
+          </span>
+          <span class="value">{{ facture.commande.orderNumber }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="action-buttons">
+    <button class="btn btn-secondary" (click)="goBack()">
+      <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M15 19l-7-7 7-7"/>
+      </svg>
+      <span>Retour aux produits</span>
+    </button>
+
+    <button class="btn btn-primary" (click)="payerFacture()">
+      <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M4 7h16M4 12h8m-8 5h16"/>
+      </svg>
+      <span>Payer la facture</span>
+    </button>
+  </div>
+
+</div>
