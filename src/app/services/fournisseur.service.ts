@@ -8,11 +8,10 @@ import { Fournisseur } from '../core/models/fournisseur';
 })
 export class FournisseurService {
 
-<<<<<<< HEAD
+
   private apiUrl = 'http://localhost:8097/fournisseur'; // adapte si ton port/backend change
-=======
-  private apiUrl = 'http://localhost:8065/fournisseur'; // adapte si ton port/backend change
->>>>>>> e6f18f61c3d6cd2b5d2c79c823868cccfebe16bb
+
+
 
   constructor(private http: HttpClient) { }
 
