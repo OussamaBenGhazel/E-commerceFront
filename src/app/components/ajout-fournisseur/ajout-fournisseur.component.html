@@ -1,0 +1,22 @@
+<div class="container">
+  <h2 class="title">Ajouter un fournisseur</h2>
+
+  <form class="form" (ngSubmit)="ajouterFournisseur()">
+    <div class="form-group">
+      <label for="nom" class="form-label">Nom :</label>
+      <input id="nom" type="text" [(ngModel)]="nouveauFournisseur.nom" name="nom" required class="form-input" />
+      <div class="error-message" *ngIf="message">{{ message }}</div>
+    </div>
+
+    <button type="submit" class="submit-btn">Ajouter</button>
+  </form>
+
+  <hr class="separator" />
+
+  <h3 class="list-title">Liste des fournisseurs</h3>
+  <ul class="fournisseur-list">
+    <li *ngFor="let f of fournisseurs" class="fournisseur-item">
+      {{ f.id }} - {{ f.nom }}
+    </li>
+  </ul>
+</div>

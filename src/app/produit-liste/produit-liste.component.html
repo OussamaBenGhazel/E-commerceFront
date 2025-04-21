@@ -1,0 +1,77 @@
+<!-- Ajoutez en haut de la page -->
+<div class="floating-cart" [class.active]="showCart" (click)="toggleCart()">
+  <i class="fas fa-shopping-cart"></i>
+  <span class="cart-count">{{panierService.getCartItemCount()}}</span>
+</div>
+
+<div class="cart-overlay" [class.active]="showCart">
+  <div class="cart-container" (click)="$event.stopPropagation()">
+    <div class="cart-header">
+      <h3>Votre Panier</h3>
+      <button class="close-btn" (click)="toggleCart()">&times;</button>
+    </div>
+    <div class="cart-items">
+      <div *ngFor="let item of panierService.getPanier().produits" class="cart-item">
+        <div class="item-details">
+          <h4>{{item.name}}</h4>
+          <p>{{item.price | currency:'EUR':'symbol':'1.2-2'}}</p>
+        </div>
+        <button class="remove-btn" (click)="removeFromCart(item.id)">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="total-price">
+        Total: {{panierService.getTotalPrice() | currency:'EUR':'symbol':'1.2-2'}}
+      </div>
+      <button class="checkout-btn" (click)="savePanier()">Commander</button>
+    </div>
+  </div>
+</div>
+
+<!-- Ajoutez dans produit-liste.component.html -->
+<div class="cart-fab">
+  <div class="cart-icon" (click)="toggleCart()">
+    <i class="fas fa-shopping-cart"></i>
+    <span class="badge">{{panierService.getCartItemCount()}}</span>
+  </div>
+</div>
+
+<!-- Modifiez cette partie -->
+<div class="product-grid">
+  <div *ngFor="let produit of pagedProduits" class="product-card"> <!-- Changé de 'produits' à 'pagedProduits' -->
+    <div class="card-header">
+      <span class="category-badge">{{produit.category}}</span>
+      <span *ngIf="produit.stock > 0" class="stock in-stock">En stock</span>
+      <span *ngIf="produit.stock <= 0" class="stock out-of-stock">Rupture</span>
+    </div>
+
+    <div class="product-details">
+      <h3 class="product-title">{{produit.name}}</h3>
+      <p class="product-description">{{produit.description}}</p>
+      <div class="price-section">
+        <span class="current-price">{{produit.price | currency:'EUR':'symbol':'1.2-2'}}</span>
+      </div>
+    </div>
+    <div class="card-actions">
+      <button class="add-to-cart" (click)="addToPanier(produit)" [disabled]="produit.stock <= 0">
+        <i class="fas fa-cart-plus"></i> Ajouter
+      </button>
+      <button class="quick-view">
+        <i class="fas fa-eye"></i> Détails
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Pagination (gardez comme vous l'avez) -->
+<div class="pagination">
+  <button (click)="prevPage()" [disabled]="currentPage === 1">
+    <i class="fas fa-chevron-left"></i> Précédent
+  </button>
+  <span>Page {{currentPage}}/{{totalPages}}</span>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages">
+    Suivant <i class="fas fa-chevron-right"></i>
+  </button>
+</div>

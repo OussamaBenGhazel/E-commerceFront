@@ -1,0 +1,12 @@
+/* Structure de layout principale */
+.frontend-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-wrapper {
+  flex: 1;
+  position: relative;
+  padding-bottom: 80px; /* Hauteur du panier + marge */
+}
