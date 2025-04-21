@@ -18,11 +18,12 @@ import { confirm } from '../fn/authentication/confirm';
 import { Confirm$Params } from '../fn/authentication/confirm';
 import { register } from '../fn/authentication/register';
 import { Register$Params } from '../fn/authentication/register';
-import { User } from 'src/app/core/models/user.model';
+import { User } from '../services/UserService.services/user';
+
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService extends BaseService {
-  private readonly backendUrl = 'http://localhost:8045/api/v1';
+  private readonly backendUrl = 'http://localhost:8065/api/v1';
   constructor(config: ApiConfiguration, http: HttpClient) {
     super(config, http);
   }
